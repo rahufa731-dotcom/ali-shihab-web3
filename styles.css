@@ -1,0 +1,98 @@
+/* Custom styles for DNAC Digital Campus */
+/* Color Palette: #CDCBD6 | #D96846 | #596235 | #2F3020 */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --silver:      #CDCBD6;
+  --terracotta:  #D96846;
+  --olive:       #596235;
+  --olive-dark:  #2F3020;
+
+  --primary:        var(--olive);       /* #596235 */
+  --primary-dark:   var(--olive-dark);  /* #2F3020 */
+  --accent:         var(--terracotta);  /* #D96846 */
+  --accent-light:   #e07f62;
+  --muted:          var(--silver);      /* #CDCBD6 */
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.font-arabic {
+  font-family: 'Amiri', serif;
+}
+
+/* ─── Islamic Geometric Subtle Background Pattern ─── */
+.bg-islamic-pattern {
+  background-color: #2F3020;
+  background-image: radial-gradient(#596235 0.75px, transparent 0.75px),
+                    radial-gradient(#596235 0.75px, #2F3020 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+.dark ::-webkit-scrollbar-track { background: #1a1f10; }
+::-webkit-scrollbar-thumb { background: #596235; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #D96846; }
+
+/* ─── Glassmorphism ─── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dark .glass-panel {
+  background: rgba(47, 48, 32, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Ticker Marquee ─── */
+@keyframes ticker {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 35s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* ─── Pulse ring ─── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(217,104,70,.7); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 10px rgba(217,104,70,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(217,104,70,0); }
+}
+.pulse-badge { animation: pulse-ring 2s infinite; }
+
+/* ─── Print Stylesheet ─── */
+@media print {
+  body * { visibility: hidden; }
+  #printable-content, #printable-content * { visibility: visible; }
+  #printable-content {
+    position: absolute; left: 0; top: 0;
+    width: 100%; margin: 0; padding: 20px;
+    background: white !important; color: black !important;
+  }
+  .no-print { display: none !important; }
+}
+
+/* ─── Tailwind color override helpers ─── */
+/* These utility classes let us use our palette via plain class names in HTML */
+.bg-primary       { background-color: #596235 !important; }
+.bg-primary-dark  { background-color: #2F3020 !important; }
+.bg-accent        { background-color: #D96846 !important; }
+.text-primary     { color: #596235 !important; }
+.text-primary-dark{ color: #2F3020 !important; }
+.text-accent      { color: #D96846 !important; }
+.border-primary   { border-color: #596235 !important; }
+.border-accent    { border-color: #D96846 !important; }
+.ring-primary     { --tw-ring-color: #596235 !important; }
